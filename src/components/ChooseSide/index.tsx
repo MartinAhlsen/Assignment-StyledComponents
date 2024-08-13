@@ -9,11 +9,20 @@ const StyledChoiceContainer = styled.div`
   display: flex;
 `;
 
-const StyledButtonWithText = styled.div`
+const StyledButtonWithIcon = styled.button`
+  all: unset;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 24px;
+  margin: 32px;
+`;
+
+const StyledIcon = styled.img`
+  height: 150px;
+  width: 150px;
 `;
 
 const ChooseSide = ({ updateLightOrShadow }: ChooseSideProp) => {
@@ -22,13 +31,14 @@ const ChooseSide = ({ updateLightOrShadow }: ChooseSideProp) => {
   };
   return (
     <StyledChoiceContainer>
-      <StyledButtonWithText>
-        <button onClick={() => handleClick("light")}>Choose the Light</button>
-      </StyledButtonWithText>
-      <StyledButtonWithText>
-        <h3>Choose Darkness</h3>
-        <button onClick={() => handleClick("shadow")}>Choose the Shadow</button>
-      </StyledButtonWithText>
+      <StyledButtonWithIcon onClick={() => handleClick("light")}>
+        <StyledIcon src="/images/light.svg" alt="" />
+        <p>Choose the Light</p>
+      </StyledButtonWithIcon>
+      <StyledButtonWithIcon onClick={() => handleClick("shadow")}>
+        <StyledIcon src="/images/shadow.svg" alt="" />
+        <p>Choose the Shadow</p>
+      </StyledButtonWithIcon>
     </StyledChoiceContainer>
   );
 };
