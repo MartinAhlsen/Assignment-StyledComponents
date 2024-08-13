@@ -11,13 +11,13 @@ import styled from "styled-components";
 
 type MainProps = {
   affinityProp: string | null;
-  updateFunction: (userName: string | null) => void;
+  updateFunction: (affinity: string | null) => void;
 };
 
 const Main = ({ affinityProp, updateFunction }: MainProps) => {
   const [quote, setQuote] = useState<{ name: string; text: string }>({
-    name: "Test",
-    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus quis quae error. Praesentium id consequatur aspernatur, enim a vero mollitia soluta temporibus ipsum vel, ea saepe ab, minus aut deleniti.",
+    name: "",
+    text: "",
   });
 
   const randomQuote = (affinityProp: string) => {
@@ -47,16 +47,35 @@ const Main = ({ affinityProp, updateFunction }: MainProps) => {
     align-items: center;
   `;
 
+  const StyledButton = styled.button`
+    all: unset;
+    cursor: pointer;
+  `;
+
+  const changeSides = (affinity: string) => {
+    updateFunction(affinity);
+  };
+
   return (
     <StyledMain>
       {affinityProp === null && (
         <ChooseSide updateLightOrShadow={updateFunction} />
       )}
       {affinityProp === "light" && (
-        <QuoteComponent name={quote.name} quote={quote.text} />
+        <QuoteComponent
+          name={quote.name}
+          quote={quote.text}
+          affinityProp={affinityProp}
+          updateLightOrShadow={updateFunction}
+        />
       )}
       {affinityProp === "shadow" && (
-        <QuoteComponent name={quote.name} quote={quote.text} />
+        <QuoteComponent
+          name={quote.name}
+          quote={quote.text}
+          affinityProp={affinityProp}
+          updateLightOrShadow={updateFunction}
+        />
       )}
     </StyledMain>
   );
