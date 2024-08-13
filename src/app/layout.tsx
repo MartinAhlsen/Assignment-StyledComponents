@@ -23,7 +23,16 @@ export default function RootLayout({
   `;
 
   useEffect(() => {
-    console.log("The lightOrShadow state has changed:", lightOrShadow);
+    const cookie = localStorage.getItem("affinity");
+    if (cookie) {
+      setLightOrShadow(cookie);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (lightOrShadow !== null) {
+      localStorage.setItem("affinity", lightOrShadow);
+    }
   }, [lightOrShadow]);
 
   const handleClick = (choice: string | null) => {

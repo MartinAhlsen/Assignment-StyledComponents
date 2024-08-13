@@ -8,7 +8,7 @@ type QuoteProps = {
   updateLightOrShadow: (affinity: string | null) => void;
 };
 
-const StyledQuoteContainer = styled.div`
+const StyledQuoteContainer = styled.div<{ affinity: string | null }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,15 +27,13 @@ const Quote = ({
   updateLightOrShadow,
 }: QuoteProps) => {
   const changeSides = (affinity: string | null) => {
-    console.log(affinity);
     affinity === "light"
       ? updateLightOrShadow("shadow")
       : updateLightOrShadow("light");
-    console.log(affinity);
   };
 
   return (
-    <StyledQuoteContainer>
+    <StyledQuoteContainer affinity={affinityProp}>
       <StyledButton onClick={() => changeSides(affinityProp)}>
         Change side
       </StyledButton>

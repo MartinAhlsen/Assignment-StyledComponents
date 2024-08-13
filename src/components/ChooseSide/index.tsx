@@ -32,11 +32,11 @@ const ChooseSide = ({ updateLightOrShadow }: ChooseSideProp) => {
   return (
     <StyledChoiceContainer>
       <StyledButtonWithIcon onClick={() => handleClick("light")}>
-        <StyledIcon src="/images/light.svg" alt="" />
+        <StyledIcon src="/images/light.svg" alt="Symbol of Light" />
         <p>Choose the Light</p>
       </StyledButtonWithIcon>
       <StyledButtonWithIcon onClick={() => handleClick("shadow")}>
-        <StyledIcon src="/images/shadow.svg" alt="" />
+        <StyledIcon src="/images/shadow.svg" alt="Symbol of Shadow" />
         <p>Choose the Shadow</p>
       </StyledButtonWithIcon>
     </StyledChoiceContainer>
