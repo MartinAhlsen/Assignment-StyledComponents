@@ -8,6 +8,9 @@ const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   text-align: center;
+  h1 {
+    padding: 0 16px;
+  }
 
   &:before {
     content: "";
@@ -56,6 +59,10 @@ const getAffinityUrl = (affinity: string | null): string => {
   }
 };
 
+function capitalizeFirstLetter(string: string | null) {
+  if (string) return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 type HeaderProps = {
   affinity: string | null;
 };
@@ -71,7 +78,13 @@ const Header = ({ affinity }: HeaderProps) => {
           alt={`Symbol of ${affinity || "the Wheel of Time"}`}
         />
       </StyledIconContainer>
-      <h1>Wheel of Time - The {affinity}'s quote of the day</h1>
+      <h1>{`Wheel of time - 
+      ${
+        !affinity
+          ? "Quote of the day"
+          : `The ${capitalizeFirstLetter(affinity)}'s quote of the day`
+      }
+      `}</h1>
       <StyledIconContainer>
         <StyledIcon
           src={imageUrl}

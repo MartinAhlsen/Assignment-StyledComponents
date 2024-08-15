@@ -20,6 +20,7 @@ export default function RootLayout({
     background-image: url("/images/background.jpg");
     color: #e0e0e0;
     margin: 0;
+    box-sizing: border-box;
   `;
 
   useEffect(() => {
