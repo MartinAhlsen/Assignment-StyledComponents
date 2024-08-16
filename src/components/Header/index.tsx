@@ -8,8 +8,9 @@ const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 8px;
   h1 {
-    padding: 0 16px;
+    padding: 0 8px;
   }
 
   &:before {
@@ -40,12 +41,30 @@ const StyledIconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 480px) {
+    padding: 0 48px;
+  }
 `;
 
 const StyledIcon = styled.img`
   width: 50px;
   height: 50px;
   object-fit: contain;
+`;
+
+const StyledHeadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
+  h1 {
+    padding: 0;
+    margin: 0;
+  }
+  h2 {
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const getAffinityUrl = (affinity: string | null): string => {
@@ -78,13 +97,14 @@ const Header = ({ affinity }: HeaderProps) => {
           alt={`Symbol of ${affinity || "the Wheel of Time"}`}
         />
       </StyledIconContainer>
-      <h1>{`Wheel of time - 
-      ${
-        !affinity
-          ? "Quote of the day"
-          : `The ${capitalizeFirstLetter(affinity)}'s quote of the day`
-      }
-      `}</h1>
+      <StyledHeadingContainer>
+        <h1>Wheel of time</h1>
+        <h2>
+          {!affinity
+            ? "Quote of the day"
+            : `The ${capitalizeFirstLetter(affinity)}'s quote of the day`}
+        </h2>
+      </StyledHeadingContainer>
       <StyledIconContainer>
         <StyledIcon
           src={imageUrl}

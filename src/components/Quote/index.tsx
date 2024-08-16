@@ -8,27 +8,30 @@ type QuoteProps = {
   updateLightOrShadow: (affinity: string | null) => void;
 };
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div<{ affinity: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   max-height: 300px;
   max-width: 600px;
-  padding: 24px;
-  color: black;
+  padding: ${(props) => (props.affinity === "light" ? "24px" : "32px")};
+  color: ${(props) => (props.affinity === "light" ? "black" : "#f0f0f0")};
   border-radius: 24px;
-  /* position: relative; */
+  position: relative;
+  margin: 16px;
   &:before {
     content: "";
     position: absolute;
-    height: 300px;
-    width: 600px;
-    background-color: white;
-    opacity: 0.3;
+    height: 100%;
+    width: 100%;
+    background-color: ${(props) =>
+      props.affinity === "light" ? "#f0f0f0" : "black"};
+    opacity: ${(props) => (props.affinity === "light" ? 0.3 : 0.6)};
     border-radius: 24px;
     z-index: -1;
-    box-shadow: 0 0 30px 20px #fff;
+    box-shadow: 0 0 30px 20px
+      ${(props) => (props.affinity === "light" ? "#f0f0f0" : "black")};
   }
 `;
 
@@ -37,11 +40,29 @@ const StyledQuoteContainer = styled.div<{ affinity: string | null }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 32px;
+  /* &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: ${(props) =>
+    props.affinity === "light" ? "#f0f0f0" : "black"};
+    opacity: ${(props) => (props.affinity === "light" ? 0.3 : 0.6)};
+    border-radius: 24px;
+    z-index: -1;
+    box-shadow: 0 0 30px 20px
+      ${(props) => (props.affinity === "light" ? "#f0f0f0" : "black")};
+  } */
 `;
 
 const StyledButton = styled.button`
   all: unset;
   cursor: pointer;
+  box-shadow: 0 0 8px 8px
+    ${(props) => (props.affinity === "light" ? "#a4a4a4" : "#2c2c2c")};
+  padding: 16px;
+  border-radius: 10px;
 `;
 
 const Quote = ({
@@ -57,9 +78,12 @@ const Quote = ({
   };
 
   return (
-    <StyledWrapper>
-      <StyledButton onClick={() => changeSides(affinityProp)}>
-        Change side
+    <StyledWrapper affinity={affinityProp}>
+      <StyledButton
+        affinity={affinityProp}
+        onClick={() => changeSides(affinityProp)}
+      >
+        Change sides
       </StyledButton>
       <StyledQuoteContainer affinity={affinityProp}>
         <h2>{name}</h2>
