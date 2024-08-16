@@ -11,13 +11,6 @@ const StyledChoiceContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-// const StyledChoiceContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   @media screen and (min-width: 480px) {
-//     flex-direction: row;
-//   }
-// `;
 
 const StyledButtonWithIcon = styled.button`
   all: unset;

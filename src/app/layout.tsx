@@ -43,13 +43,6 @@ export default function RootLayout({
     <html lang="en">
       <StyledBody>
         <Header affinity={lightOrShadow} />
-        <div>
-          <button onClick={() => handleClick("light")}>Choose the Light</button>
-          <button onClick={() => handleClick("shadow")}>
-            Choose the Shadow
-          </button>
-          <button onClick={() => handleClick(null)}>Choose the Null</button>
-        </div>
         <Main affinityProp={lightOrShadow} updateFunction={setLightOrShadow} />
         <Footer />
       </StyledBody>

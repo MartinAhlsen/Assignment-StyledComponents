@@ -52,10 +52,6 @@ const Main = ({ affinityProp, updateFunction }: MainProps) => {
     cursor: pointer;
   `;
 
-  const changeSides = (affinity: string) => {
-    updateFunction(affinity);
-  };
-
   return (
     <StyledMain>
       {affinityProp === null && (
