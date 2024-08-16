@@ -8,7 +8,7 @@ type QuoteProps = {
   updateLightOrShadow: (affinity: string | null) => void;
 };
 
-const StyledWrapper = styled.div<{ affinity: string }>`
+const StyledWrapper = styled.div<{ affinity: string | null }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,22 +41,9 @@ const StyledQuoteContainer = styled.div<{ affinity: string | null }>`
   justify-content: center;
   align-items: center;
   padding-top: 32px;
-  /* &:before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: ${(props) =>
-    props.affinity === "light" ? "#f0f0f0" : "black"};
-    opacity: ${(props) => (props.affinity === "light" ? 0.3 : 0.6)};
-    border-radius: 24px;
-    z-index: -1;
-    box-shadow: 0 0 30px 20px
-      ${(props) => (props.affinity === "light" ? "#f0f0f0" : "black")};
-  } */
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ affinity: string | null }>`
   all: unset;
   cursor: pointer;
   box-shadow: 0 0 8px 8px

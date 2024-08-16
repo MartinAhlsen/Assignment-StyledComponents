@@ -7,7 +7,17 @@ type ChooseSideProp = {
 
 const StyledChoiceContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;
+// const StyledChoiceContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   @media screen and (min-width: 480px) {
+//     flex-direction: row;
+//   }
+// `;
 
 const StyledButtonWithIcon = styled.button`
   all: unset;
@@ -16,8 +26,11 @@ const StyledButtonWithIcon = styled.button`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 24px;
-  margin: 32px;
+  padding: 12px;
+  @media screen and (min-width: 530px) {
+    padding: 24px;
+    margin: 32px;
+  }
 `;
 
 const StyledIcon = styled.img`
